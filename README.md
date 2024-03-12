@@ -5,9 +5,10 @@ Setup project (GerVaf / That-Zin-Min)
 
 
 **Install dependencies:**
-yarn or npm install
 
-yarn start or npm start
+>yarn or npm install
+
+>>yarn start or npm start
 
 **Usage**
 tryCatch from the utils is for errorHandling for server error 
