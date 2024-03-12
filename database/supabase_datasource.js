@@ -248,11 +248,6 @@ export const updateData = async (
     };
   }
 
-  // console.log(
-  //   `Updating in table: ${tableName} where ${filterColName} = ${id}`,
-  //   updatedData
-  // );
-
   return {
     data,
     error: null,
@@ -309,38 +304,3 @@ export const getDataByDateAndCar = async (
   return { data, error: null };
 };
 
-// interface ColLocation{
-//   colName,
-//   colValue|number
-// }
-
-// export const updateAllData = async (
-//   tableName,
-//   tableCol: ColLocation,
-//   updatedData
-// ) => {
-//   const { data, error } = await supabase
-//     .from(tableName)
-//     .update(updatedData)
-//     .eq(tableCol.colName, tableCol.colValue)
-//     .select();
-
-//   if (error) {
-//     console.log("error=>", error);
-
-//     return {
-//       data: null,
-//       error: error.message,
-//     };
-//   }
-
-//   // console.log(
-//   //   `Updating in table: ${tableName} where ${columnName} = ${id}`,
-//   //   updatedData
-//   // );
-
-//   return {
-//     data,
-//     error: null,
-//   };
-// };
