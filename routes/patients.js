@@ -5,5 +5,6 @@ const router = Router();
 
 router.get("/", patient.getAllPatients);
 router.post("/", patient.createPatient);
+router.get("/:id", patient.getPatientByID);
 
 export default router;
