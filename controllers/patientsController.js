@@ -39,3 +39,13 @@ export const deletePatient = responseExceptionHandler(
   400,
   "Unexpected server error occured or supported ID is not valid"
 );
+
+export const updatePatient = responseExceptionHandler(
+  async (req, res) => {
+    const id = Number(utils.getFromURI(req)("id"));
+    const updatedPatient = await patientsService.updatePatient(id, req.body);
+    return res.status(200).json({ data: updatedPatient });
+  },
+  400,
+  "Unexpected server error occured or supported ID is not valid"
+);
