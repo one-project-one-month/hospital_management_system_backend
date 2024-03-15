@@ -4,6 +4,11 @@ export const getAllRooms = async () => db.room.findMany();
 
 export const createRoom = async (name) => db.room.create({ data: { name } });
 
+export const getRoom = async (id) =>
+  db.room.findMany({
+    where: { id },
+  });
+
 export const deleteRoom = async (id) =>
   db.room.delete({
     where: { id },
