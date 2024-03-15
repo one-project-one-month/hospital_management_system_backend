@@ -8,3 +8,5 @@ export const createPatient = async (patient) =>
   db.patient.create({
     data: { ...patient },
   });
+
+export const deletePatient = async (id) => db.patient.delete({ where: { id } });
