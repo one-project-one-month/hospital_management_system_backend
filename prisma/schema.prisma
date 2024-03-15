@@ -15,5 +15,5 @@ datasource db {
 
 model Room {
   id    Int    @id @default(autoincrement())
-  title String @db.VarChar(255)
+  name String @db.VarChar(255)
 }
