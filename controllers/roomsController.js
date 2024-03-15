@@ -1,4 +1,5 @@
 import * as room from "../services/roomsService.js";
+import * as utils from "../utils/index.js";
 import { responseExceptionHandler } from "../handlers/exceptionHandler.js";
 
 export const getAllRooms = responseExceptionHandler(
@@ -12,7 +13,7 @@ export const getAllRooms = responseExceptionHandler(
 
 export const createRoom = responseExceptionHandler(
   async (req, res) => {
-    const roomName = req.body["name"];
+    const roomName = utils.getFormData(req)("name");
     const newRoom = await room.createRoom(roomName);
     return res.status(201).json({ data: newRoom });
   },
@@ -22,7 +23,7 @@ export const createRoom = responseExceptionHandler(
 
 export const deleteRoom = responseExceptionHandler(
   async (req, res) => {
-    const id = Number(req.params["id"]);
+    const id = utils.getIDFromURI(req);
     await room.deleteRoom(id);
     return res.status(204).end();
   },
@@ -32,7 +33,7 @@ export const deleteRoom = responseExceptionHandler(
 
 export const updateRoom = responseExceptionHandler(
   async (req, res) => {
-    const id = Number(req.params["id"]);
+    const id = utils.getIDFromURI(req);
     const roomName = req.body["name"];
     const updatedRoom = await room.updateRoom(id, roomName);
     return res.status(200).json({ data: updatedRoom });
@@ -43,7 +44,7 @@ export const updateRoom = responseExceptionHandler(
 
 export const findRooms = responseExceptionHandler(
   async (req, res) => {
-    const roomName = req.body["name"];
+    const roomName = utils.getFormData(req)("name");
     const foundRoom = await room.searchRooms(roomName);
     return res.status(200).json({ data: foundRoom });
   },
