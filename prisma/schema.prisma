@@ -13,7 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Patient {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(50)
+  gender       String   @db.Char(1)
+  phone_number String   @db.VarChar(15)
+  email        String   @db.VarChar(50)
+  blood_type   String   @db.Char(2)
+  birth_date   DateTime @db.Date
+  address      String   @db.VarChar(255)
+}
+
 model Room {
-  id    Int    @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String @db.VarChar(255)
 }
