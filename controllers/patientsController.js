@@ -49,3 +49,13 @@ export const updatePatient = responseExceptionHandler(
   400,
   "Unexpected server error occured or supported ID is not valid"
 );
+
+export const findPatients = responseExceptionHandler(
+  async (req, res) => {
+    console.info("body", req.body);
+    const patients = await patientsService.searchPatients(req.body);
+    return res.status(200).json({ data: patients });
+  },
+  400,
+  "Unexpected server error occured or supported data is not valid"
+);

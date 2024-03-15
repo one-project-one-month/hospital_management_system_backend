@@ -16,3 +16,8 @@ export const updatePatient = async (id, patientData) =>
     where: { id },
     data: { ...patientData },
   });
+
+export const searchPatients = async (filters) =>
+  db.patient.findFirst({
+    where: {...filters },
+  });
