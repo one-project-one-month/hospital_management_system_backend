@@ -9,3 +9,13 @@ export const getAllPatients = responseExceptionHandler(
   500,
   "Unexpected server error occured"
 );
+
+export const createPatient = responseExceptionHandler(
+  async (req, res) => {
+    console.info("body ", req.body);
+    const newPatient = await patientsService.createPatient(req.body);
+    res.status(200).json({ data: newPatient });
+  },
+  500,
+  "Unexpected server error occured"
+);
