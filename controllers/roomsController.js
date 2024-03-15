@@ -13,13 +13,12 @@ export const getAllRooms = responseExceptionHandler(
 
 export const getRoomByID = responseExceptionHandler(
   async (req, res) => {
-    const id = utils.getIDFromURI(req);
-    console.info("id ", id);
+    const id = Number(utils.getFromURI(req)("id"));
     const room = await roomsService.getRoom(id);
     return res.status(200).json({ data: room });
   },
-  500,
-  "Unexpected server error occured"
+  400,
+  "Unexpected server error occured or supported ID is not valid"
 );
 
 export const createRoom = responseExceptionHandler(
@@ -34,23 +33,23 @@ export const createRoom = responseExceptionHandler(
 
 export const deleteRoom = responseExceptionHandler(
   async (req, res) => {
-    const id = utils.getIDFromURI(req);
+    const id = Number(utils.getFromURI(req)("id"));
     await roomsService.deleteRoom(id);
     return res.status(204).end();
   },
-  500,
-  "Unexpected server error occured"
+  400,
+  "Unexpected server error occured or supported ID is not valid"
 );
 
 export const updateRoom = responseExceptionHandler(
   async (req, res) => {
-    const id = utils.getIDFromURI(req);
-    const roomName = req.body["name"];
+    const id = Number(utils.getFromURI(req)("id"));
+    const roomName = utils.getFormData(req)("name");
     const updatedRoom = await roomsService.updateRoom(id, roomName);
     return res.status(200).json({ data: updatedRoom });
   },
-  500,
-  "Unexpected server error occured"
+  400,
+  "Unexpected server error occured or supported ID is not valid"
 );
 
 export const findRooms = responseExceptionHandler(
