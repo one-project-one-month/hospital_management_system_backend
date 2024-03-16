@@ -5,7 +5,7 @@ export const getAllRooms = async () => db.room.findMany();
 export const createRoom = async (name) => db.room.create({ data: { name } });
 
 export const getRoom = async (id) =>
-  db.room.findMany({
+  db.room.findFirst({
     where: { id },
   });
 
