@@ -16,7 +16,7 @@ datasource db {
 model Patient {
   id           Int      @id @default(autoincrement())
   name         String   @db.VarChar(50)
-  gander       String   @db.Char(1)
+  gender       String   @db.Char(1)
   phone_number String   @db.VarChar(15)
   email        String   @db.VarChar(50)
   blood_type   String   @db.Char(2)
