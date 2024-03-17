@@ -14,22 +14,22 @@ datasource db {
 }
 
 model Patient {
-  id           Int      @id @default(autoincrement())
-  name         String   @db.VarChar(50)
-  gender       String   @db.Char(1)
-  phone_number String   @db.VarChar(15)
-  email        String   @db.VarChar(50)
-  blood_type   String   @db.Char(2)
-  birth_date   DateTime @db.Date
-  address      String   @db.VarChar(255)
+  Id           Int      @id @default(autoincrement())
+  Name         String   @db.VarChar(50)
+  Gender       String   @db.Char(1)
+  PhoneNumber String   @db.VarChar(15)
+  Email        String   @db.VarChar(50)
+  BloodType   String   @db.Char(2)
+  BirthDate   DateTime @db.Date
+  Address      String   @db.VarChar(255)
 }
 
 model Room {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(255)
+  Id   Int    @id @default(autoincrement())
+  Name String @db.VarChar(255)
 }
 
 model Disease {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(255)
+  Id   Int    @id @default(autoincrement())
+  Name String @db.VarChar(255)
 }
