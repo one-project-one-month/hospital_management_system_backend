@@ -2,23 +2,24 @@ import { db } from "../db/postgres.js";
 
 export const getAllDiseases = async () => db.disease.findMany();
 
-export const createDisease = async (name) => db.disease.create({ data: { name } });
+export const createDisease = async (Name) =>
+  db.disease.create({ data: { Name } });
 
-export const getDisease = async (id) =>
+export const getDisease = async (Id) =>
   db.disease.findFirst({
-    where: { id },
+    where: { Id },
   });
 
-export const deleteDisease = async (id) =>
+export const deleteDisease = async (Id) =>
   db.disease.delete({
-    where: { id },
+    where: { Id },
   });
 
-export const updateDisease = async (id, name) =>
+export const updateDisease = async (Id, Name) =>
   db.disease.update({
-    where: { id },
-    data: { name },
+    where: { Id },
+    data: { Name },
   });
 
-export const searchDiseases = async (name) =>
-  db.disease.findFirst({ where: { name } });
+export const searchDiseases = async (Name) =>
+  db.disease.findFirst({ where: { Name } });
