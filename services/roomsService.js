@@ -2,23 +2,23 @@ import { db } from "../db/postgres.js";
 
 export const getAllRooms = async () => db.room.findMany();
 
-export const createRoom = async (name) => db.room.create({ data: { name } });
+export const createRoom = async (Name) => db.room.create({ data: { Name } });
 
-export const getRoom = async (id) =>
+export const getRoom = async (Id) =>
   db.room.findFirst({
-    where: { id },
+    where: { Id },
   });
 
-export const deleteRoom = async (id) =>
+export const deleteRoom = async (Id) =>
   db.room.delete({
-    where: { id },
+    where: { Id },
   });
 
-export const updateRoom = async (id, name) =>
+export const updateRoom = async (Id, Name) =>
   db.room.update({
-    where: { id },
-    data: { name },
+    where: { Id },
+    data: { Name },
   });
 
-export const searchRooms = async (name) =>
-  db.room.findFirst({ where: { name } });
+export const searchRooms = async (Name) =>
+  db.room.findFirst({ where: { Name } });
