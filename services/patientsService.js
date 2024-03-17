@@ -2,18 +2,18 @@ import { db } from "../db/postgres.js";
 
 export const getAllPatients = async () => db.patient.findMany();
 
-export const getPatient = async (id) => db.patient.findFirst({ where: { id } });
+export const getPatient = async (Id) => db.patient.findFirst({ where: { Id } });
 
 export const createPatient = async (patient) =>
   db.patient.create({
     data: { ...patient },
   });
 
-export const deletePatient = async (id) => db.patient.delete({ where: { id } });
+export const deletePatient = async (Id) => db.patient.delete({ where: { Id } });
 
-export const updatePatient = async (id, patientData) =>
+export const updatePatient = async (Id, patientData) =>
   db.patient.update({
-    where: { id },
+    where: { Id },
     data: { ...patientData },
   });
 

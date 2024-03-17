@@ -1,5 +1,6 @@
 import * as patientsService from "../services/patientsService.js";
 import * as utils from "../utils/index.js";
+import { createPatientHandler } from "../handlers/createPatientHandler.js";
 import { responseExceptionHandler } from "../handlers/exceptionHandler.js";
 
 export const getAllPatients = responseExceptionHandler(
@@ -13,7 +14,9 @@ export const getAllPatients = responseExceptionHandler(
 
 export const createPatient = responseExceptionHandler(
   async (req, res) => {
-    const newPatient = await patientsService.createPatient(req.body);
+    const newPatient = await patientsService.createPatient(
+      createPatientHandler(req)
+    );
     return res.status(201).json({ data: newPatient });
   },
   500,
@@ -43,7 +46,10 @@ export const deletePatient = responseExceptionHandler(
 export const updatePatient = responseExceptionHandler(
   async (req, res) => {
     const id = Number(utils.getFromURI(req)("id"));
-    const updatedPatient = await patientsService.updatePatient(id, req.body);
+    const updatedPatient = await patientsService.updatePatient(
+      id,
+      createPatientHandler(req)
+    );
     return res.status(200).json({ data: updatedPatient });
   },
   400,
@@ -52,7 +58,9 @@ export const updatePatient = responseExceptionHandler(
 
 export const findPatients = responseExceptionHandler(
   async (req, res) => {
-    const patients = await patientsService.searchPatients(req.body);
+    const patients = await patientsService.searchPatients(
+      createPatientHandler(req)
+    );
     return res.status(200).json({ data: patients });
   },
   400,
