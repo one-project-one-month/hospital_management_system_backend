@@ -31,20 +31,19 @@ model Room {
 }
 
 model Disease {
-  Id            Int             @id @default(autoincrement())
-  Name          String          @db.VarChar(255)
-  MedicalRecord MedicalRecord[]
+  Id             Int             @id @default(autoincrement())
+  Name           String          @db.VarChar(255)
+  MedicalRecords MedicalRecord[]
 }
 
 model MedicalRecord {
-  Id        Int      @id @default(autoincrement())
-  Patient   Patient  @relation(fields: [PatientID], references: [Id])
-  PatientID Int      @unique
-  Disease   Disease  @relation(fields: [DiseaseID], references: [Id])
-  DiseaseID Int
-  StartDate DateTime @db.Date
-  EndDate   DateTime @db.Date
+  Id        Int       @id @default(autoincrement())
+  Patient   Patient   @relation(fields: [PatientID], references: [Id])
+  PatientID Int       @unique
+  StartDate DateTime  @db.Date
+  EndDate   DateTime  @db.Date
   Diagnosis String
   Note      String
   Treatment String
+  Diseases  Disease[]
 }

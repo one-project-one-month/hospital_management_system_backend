@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/api/v1/rooms", roomsRouter);
 app.use("/api/v1/patients", patientsRouter);
 app.use("/api/v1/diseases", diseasesRouter);
-app.use("/api/v1/medicalRecords", medicalRecordsRouter);
+app.use("/api/v1/medical-records", medicalRecordsRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on Port : ${port}`);
