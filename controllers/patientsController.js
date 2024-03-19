@@ -59,7 +59,7 @@ export const updatePatient = responseExceptionHandler(
 export const findPatients = responseExceptionHandler(
   async (req, res) => {
     const patients = await patientsService.searchPatients(
-      createModelHandler(req)
+      createModelHandler(req.body)
     );
     return res.status(200).json({ data: patients });
   },
