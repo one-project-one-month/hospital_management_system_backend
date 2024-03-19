@@ -5,6 +5,7 @@ const router = Router();
 
 router.get("/", medicalRecords.getAllMedicalRecords);
 router.post("/", medicalRecords.createMedicalRecord);
+router.get("/search", medicalRecords.findMedicalRecord);
 router.put("/:id", medicalRecords.updateMedicalRecord);
 router.delete("/:id", medicalRecords.deleteMedicalRecord);
 

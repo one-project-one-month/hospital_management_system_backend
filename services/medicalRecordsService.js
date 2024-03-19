@@ -24,3 +24,8 @@ export const updateMedicalRecord = async (Id, medicalRecord) =>
       ...medicalRecord,
     },
   });
+
+export const searchMedicalRecord = async (filters) =>
+  db.medicalRecord.findMany({
+    where: { ...filters },
+  });
