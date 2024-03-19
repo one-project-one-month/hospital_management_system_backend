@@ -11,15 +11,16 @@ datasource db {
 }
 
 model Patient {
-  Id           Int          @id @default(autoincrement())
-  Name         String       @db.VarChar(100)
-  Gender       String       @db.Char(1)
-  PhoneNumber  String       @db.VarChar(20)
-  Email        String       @db.VarChar(100)
-  BloodType    String       @db.Char(2)
-  BirthDate    DateTime?     @db.Date
-  Address      String       @db.VarChar(255)
-  Appointments Appointment[]
+  Id            Int            @id @default(autoincrement())
+  Name          String         @db.VarChar(50)
+  Gender        String         @db.Char(1)
+  PhoneNumber   String         @db.VarChar(15)
+  Email         String         @db.VarChar(50)
+  BloodType     String         @db.Char(2)
+  BirthDate     DateTime       @db.Date
+  Address       String         @db.VarChar(255)
+  MedicalRecord MedicalRecord?
+  Appointments  Appointment[]
 }
 
 model Room {
@@ -29,8 +30,21 @@ model Room {
 }
 
 model Disease {
-  Id   Int    @id @default(autoincrement())
-  Name String @db.VarChar(255)
+  Id             Int             @id @default(autoincrement())
+  Name           String          @db.VarChar(255)
+  MedicalRecords MedicalRecord[]
+}
+
+model MedicalRecord {
+  Id        Int       @id @default(autoincrement())
+  Patient   Patient   @relation(fields: [PatientID], references: [Id])
+  PatientID Int       @unique
+  StartDate DateTime  @db.Date
+  EndDate   DateTime  @db.Date
+  Diagnosis String
+  Note      String
+  Treatment String
+  Diseases  Disease[]
 }
 
 model Doctor {
