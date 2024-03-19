@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,22 +11,51 @@ datasource db {
 }
 
 model Patient {
-  Id           Int      @id @default(autoincrement())
-  Name         String   @db.VarChar(50)
-  Gender       String   @db.Char(1)
-  PhoneNumber String   @db.VarChar(15)
-  Email        String   @db.VarChar(50)
-  BloodType   String   @db.Char(2)
-  BirthDate   DateTime @db.Date
-  Address      String   @db.VarChar(255)
+  Id           Int          @id @default(autoincrement())
+  Name         String       @db.VarChar(100)
+  Gender       String       @db.Char(1)
+  PhoneNumber  String       @db.VarChar(20)
+  Email        String       @db.VarChar(100)
+  BloodType    String       @db.Char(2)
+  BirthDate    DateTime?     @db.Date
+  Address      String       @db.VarChar(255)
+  Appointments Appointment[]
 }
 
 model Room {
-  Id   Int    @id @default(autoincrement())
-  Name String @db.VarChar(255)
+  Id           Int          @id @default(autoincrement())
+  Name         String       @db.VarChar(255)
+  Appointments Appointment[]
 }
 
 model Disease {
   Id   Int    @id @default(autoincrement())
   Name String @db.VarChar(255)
+}
+
+model Doctor {
+  Id     Int          @id
+  DoctorName   String       @db.VarChar(255)
+  Email         String       @db.VarChar(255)
+  MobileNumber String       @db.VarChar(255)
+  Position      String       @db.VarChar(255)
+  StartDuty    String         @db.VarChar(25)
+  EndDuty      String         @db.VarChar(25)
+  Appointments  Appointment[]
+}
+
+model Appointment {
+  Id              Int       @id
+  PatientId       Int
+  DoctorId        Int
+  AppointmentDate DateTime  @db.Date
+  RoomId          Int
+  TokenId         String    @db.Uuid @default(uuid())
+  Status          String    @db.VarChar(255)
+  IsCancel        Boolean
+  
+  // Relationships
+  Patient         Patient   @relation(fields: [PatientId], references: [Id])
+  Doctor          Doctor    @relation(fields: [DoctorId], references: [Id])
+  Room            Room      @relation(fields: [RoomId], references: [Id])
 }
