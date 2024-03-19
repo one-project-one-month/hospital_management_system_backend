@@ -3,11 +3,14 @@
 Create project ( Kaung-Myat-Hun )
 Setup project (GerVaf / That-Zin-Min)
 
+## Getting Started
 
 **Install dependencies and start server:**
->```yarn or npm install```
+>```yarn or npm or pnpm install```
 
->```yarn start or npm start```
+>```npx prisma migrate dev --name init```
+
+>```yarn start or npm or pnpm start```
 
 
 **Usage**
