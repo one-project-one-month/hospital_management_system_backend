@@ -1,6 +1,7 @@
 import * as medicalRecordsService from "../services/medicalRecordsService.js";
 import { responseExceptionHandler } from "../handlers/exceptionHandler.js";
 import { createModelHandler } from "../handlers/createModelHandler.js";
+import * as utils from "../utils/index.js";
 
 export const getAllMedicalRecords = responseExceptionHandler(
   async (req, res) => {
@@ -16,9 +17,18 @@ export const createMedicalRecord = responseExceptionHandler(
     const newMedicalRecord = await medicalRecordsService.createMedicalRecord(
       createModelHandler(req.body)
     );
-    // console.log(createModelHandler(req.body));
     return res.status(201).json({ data: newMedicalRecord });
   },
   500,
   "Unexpected server error occured"
+);
+
+export const deleteMedicalRecord = responseExceptionHandler(
+  async (req, res) => {
+    const id = Number(utils.getFromURI(req)("id"));
+    const medicalRecord = await medicalRecordsService.deleteMedicalRecord(id);
+    return res.status(200).json({ data: medicalRecord });
+  },
+  400,
+  "Unexpected server error occured or supported ID is not valid"
 );
