@@ -5,6 +5,7 @@ const router = Router();
 
 router.get("/", medicalRecords.getAllMedicalRecords);
 router.post("/", medicalRecords.createMedicalRecord);
+router.put("/:id", medicalRecords.updateMedicalRecord);
 router.delete("/:id", medicalRecords.deleteMedicalRecord);
 
 export default router;

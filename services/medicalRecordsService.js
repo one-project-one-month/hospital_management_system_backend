@@ -16,3 +16,11 @@ export const deleteMedicalRecord = async (Id) =>
   db.medicalRecord.delete({
     where: { Id },
   });
+
+export const updateMedicalRecord = async (Id, medicalRecord) =>
+  db.medicalRecord.update({
+    where: { Id },
+    data: {
+      ...medicalRecord,
+    },
+  });

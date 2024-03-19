@@ -6,7 +6,7 @@ export const createModelHandler = (body) => {
     const element = body[key];
     if (Array.isArray(element)) {
       let newKey = toTitle(key);
-      model[newKey] = {connect: []};
+      model[newKey] = { connect: [] };
       element.forEach((e) => {
         model[newKey]["connect"].push(createModelHandler(e));
       });
