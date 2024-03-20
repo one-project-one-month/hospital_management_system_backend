@@ -48,20 +48,20 @@ model MedicalRecord {
 }
 
 model Doctor {
-  Id     Int          @id
+  Id     Int          @id @default(autoincrement())
   DoctorName   String       @db.VarChar(255)
   Email         String       @db.VarChar(255)
   MobileNumber String       @db.VarChar(255)
   Position      String       @db.VarChar(255)
   StartDuty    String         @db.VarChar(25)
   EndDuty      String         @db.VarChar(25)
-  Appointments  Appointment[]
+  // Appointments  Appointment[]
 }
 
 model Appointment {
-  Id              Int       @id
+  Id              Int       @id @default(autoincrement())
   PatientId       Int
-  DoctorId        Int
+  // DoctorId        Int
   AppointmentDate DateTime  @db.Date
   RoomId          Int
   TokenId         String    @db.Uuid @default(uuid())
@@ -70,6 +70,6 @@ model Appointment {
   
   // Relationships
   Patient         Patient   @relation(fields: [PatientId], references: [Id])
-  Doctor          Doctor    @relation(fields: [DoctorId], references: [Id])
+  // Doctor          Doctor    @relation(fields: [DoctorId], references: [Id])
   Room            Room      @relation(fields: [RoomId], references: [Id])
 }
