@@ -1,6 +1,35 @@
 import { db } from "../db/postgres.js";
 
-export const getAllAppointment = async () => db.appointment.findMany();
+export const getAllAppointment = async () =>
+  db.appointment.findMany({
+    select: {
+      Id: true,
+      AppointmentDate: true,
+      Status: true,
+      IsCancel: true,
+      Doctor: {
+        select: {
+          DoctorName: true,
+          Specialist: {
+            select: {
+              Name: true,
+            },
+          },
+        },
+      },
+      Patient: {
+        select: {
+          Name: true,
+        },
+      },
+      Room: {
+        select: {
+          Id: true,
+          Name: true,
+        },
+      },
+    },
+  });
 
 export const createAppointment = async (appointment) => {
   return db.appointment.create({ data: { ...appointment } });
