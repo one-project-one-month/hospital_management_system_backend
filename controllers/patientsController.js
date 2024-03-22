@@ -48,7 +48,7 @@ export const updatePatient = responseExceptionHandler(
     const id = Number(utils.getFromURI(req)("id"));
     const updatedPatient = await patientsService.updatePatient(
       id,
-      createModelHandler(req)
+      createModelHandler(req.body)
     );
     return res.status(200).json({ data: updatedPatient });
   },

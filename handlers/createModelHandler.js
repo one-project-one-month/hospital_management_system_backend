@@ -14,6 +14,5 @@ export const createModelHandler = (body) => {
       model[toTitle(key)] = element;
     }
   }
-  console.log("Model ", model);
   return model;
 };
