@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon .",
     "test": "npm test",
-    "postinstall": "prisma migrate dev"
+    "deploy": "prisma migrate deploy"
   },
   "repository": {
     "type": "git",
