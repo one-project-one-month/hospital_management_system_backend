@@ -3,3 +3,4 @@ node_modules
 .evn
 
 *_lock
+.vercel
