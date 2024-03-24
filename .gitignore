@@ -1,5 +1,5 @@
 node_modules
-migrations
 
-.env
-yarn.lock
+.evn
+
+*_lock
