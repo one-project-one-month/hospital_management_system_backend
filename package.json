@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server",
-    "test": "npm test"
+    "start": "nodemon .",
+    "test": "npm test",
+    "postinstall": "prisma migrate dev"
   },
   "repository": {
     "type": "git",
