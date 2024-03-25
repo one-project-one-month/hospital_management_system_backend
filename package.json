@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./src",
+    "start": "nodemon .",
     "test": "npm test",
     "postinstall": "prisma migrate dev"
   },
