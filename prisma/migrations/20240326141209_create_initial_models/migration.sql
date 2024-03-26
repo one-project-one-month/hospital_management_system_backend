@@ -58,6 +58,7 @@ CREATE TABLE "Doctor" (
 CREATE TABLE "DoctorSpecialList" (
     "Id" SERIAL NOT NULL,
     "Name" VARCHAR(225) NOT NULL,
+    "Description" VARCHAR(225) NOT NULL,
 
     CONSTRAINT "DoctorSpecialList_pkey" PRIMARY KEY ("Id")
 );
