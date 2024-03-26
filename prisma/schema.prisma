@@ -64,6 +64,7 @@ model Doctor {
 model DoctorSpecialList {
   Id    Int     @id @default(autoincrement())
   Name  String  @db.VarChar(225)
+  Description  String  @db.VarChar(225)
   Doctors Doctor[] 
 }
 
