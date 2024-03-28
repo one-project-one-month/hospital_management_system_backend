@@ -17,8 +17,8 @@ app.use("/api/v1/rooms", roomsRouter);
 app.use("/api/v1/patients", patientsRouter);
 app.use("/api/v1/diseases", diseasesRouter);
 app.use("/api/v1/medical-records", medicalRecordsRouter);
-app.use("/api/v1/appointment", appointmentRouter);
-app.use("/api/v1/doctor-specialist", specialistRouter);
-app.use("/api/v1/doctor", doctorRouter);
+app.use("/api/v1/appointments", appointmentRouter);
+app.use("/api/v1/doctor-specialists", specialistRouter);
+app.use("/api/v1/doctors", doctorRouter);
 
 export default app;
