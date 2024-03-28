@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon .",
-    "test": "npm test",
-    "postinstall": "prisma migrate dev"
+    "test": "npm test"
   },
   "repository": {
     "type": "git",
