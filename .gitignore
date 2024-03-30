@@ -4,3 +4,7 @@ node_modules
 
 *_lock
 .vercel
+/.idea/.gitignore
+/.idea/hospital_management_system_backend.iml
+/.idea/modules.xml
+/.idea/vcs.xml
